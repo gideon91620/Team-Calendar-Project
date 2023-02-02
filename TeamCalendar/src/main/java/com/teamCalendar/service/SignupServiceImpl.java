@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  
 import com.teamCalendar.model.User;
  
-@Service("SignupService")
+@Service("signupService")
 public class SignupServiceImpl implements SignupService{
      
     private static final AtomicLong counter = new AtomicLong();

@@ -51,7 +51,8 @@
       </div>
     </nav>
   </header>
-  <div class="container" ng-controller="SignupController">
+  
+   <div class="container" ng-controller="SignupController">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">User Sign Up</h3>
@@ -128,7 +129,7 @@
         </table>
       </div>
     </div>
-  </div>
+  </div> 
 </body>
       
 </html>

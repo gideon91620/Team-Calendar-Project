@@ -26,11 +26,11 @@
 <form>
         <div>
             <label for="eventName">Event Name:</label>
-            <input type="text" id="eventName" ng-model="event.name" required />
+            <input type="text" id="eventName" ng-model="event.name" value="event.name" required />
         </div>
         <div>
             <label for="eventType">Event Type:</label>
-            <select id="eventType" ng-model="event.type" required>
+            <select id="eventType" ng-model="event.type" value="event.type" required>
                 <option value="practice">Practice</option>
                 <option value="game">Game</option>
                 <option value="meeting">Meeting</option>
@@ -39,24 +39,35 @@
         </div>
         <div>
             <label for="eventLocation">Event Location:</label>
-            <input type="text" id="eventLocation" ng-model="event.location" required />
+            <input type="text" id="eventLocation" ng-model="event.location" value="event.location" required />
         </div>
         <div>
             <label for="eventDate">Event Date:</label>
-            <input type="text" id="eventDate" ng-model="event.date" required />
+            <input type="text" id="eventDate" ng-model="event.date" value="event.date" required />
         </div>
         <div>
             <label for="eventTime">Event Time:</label>
-            <input type="text" id="eventTime" ng-model="event.time" required />
+            <input type="text" id="eventTime" ng-model="event.time" value="event.time" required />
         </div>
         <div>
             <label for="eventReason">Event Reason:</label>
-            <input type="text" id="eventReason" ng-model="event.reason" required />
+            <input type="text" id="eventReason" ng-model="event.reason" value="event.reason" required />
         </div>
         <div>
-            <button ng-click="addEvent()">Add Event</button>
+            <button ng-click="event.id ? updateEvent(event) : addEvent()">{{event.id ? "Update" : "Add"}}</button>
         </div>
     </form>
+    <hr />
+    <div class="container">
+       <form ng-submit="getEvent()">
+         <input type="text" name="id" ng-model="event.id" required/>
+         <input type="submit"/>
+       </form>
+    </div>
+    <div class="container">
+      <h2>Event</h2>
+      <p>{{e.name}}</p>
+    </div>
     <hr>
     <div ng-repeat="event in events | filter: {date:searchEvent}">
         <p>Name: {{event.name}}</p>
@@ -65,8 +76,8 @@
         <p>Date: {{event.date}}</p>
         <p>Time: {{event.time}}</p>
         <p>Reason: {{event.reason}}</p>
-        <button ng-click="getEvent(event.name)">Edit</button>
-        <button ng-click="deleteEvent(event.name)">Delete</button>
+        <button ng-click="prepareForUpdate(event)">Edit</button>
+        <button ng-click="deleteEvent(event.id)">Delete</button>
     </div>
     <div>
         <input type="text" ng-model="searchEvent" placeholder="Filter events by date">
